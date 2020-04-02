@@ -17,6 +17,8 @@
 %\usetheme{Singapore}
 %\usetheme{Szeged}
 
+\usepackage{bussproofs}
+
 %\usecolortheme{rose}          %% colortheme を選ぶと色使いが変わる
 %\usecolortheme{albatross}
 
@@ -62,9 +64,24 @@
   \begin{itemize}
     \item Decomposition of Classical Logic \pause
     \item Realizing constructivity keeping Duality (symmetry) intact \pause
-    \item Suitable for parallel computing
+    \item Suitable for expressing parallel computing
   \end{itemize}
   
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Suitable for parallel computing} \pause
+
+  \begin{prooftree}
+
+    \AxiomC{$f : A \multimap B$}
+    \AxiomC{$g : C \multimap D$}
+    \BinaryInfC{$f \otimes g : A \otimes B \multimap C \otimes D$}
+    
+  \end{prooftree}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
