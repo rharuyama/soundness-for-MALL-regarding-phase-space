@@ -17,7 +17,8 @@
 %\usetheme{Singapore}
 %\usetheme{Szeged}
 
-\usepackage{bussproofs}
+\usepackage{bussproofs} %% For proof tree
+\usepackage{ cmll } %% for connective ``par''
 
 %\usecolortheme{rose}          %% colortheme を選ぶと色使いが変わる
 %\usecolortheme{albatross}
@@ -59,20 +60,57 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                           
 \begin{frame}
-  \frametitle{What is Linear Logic?} \pause
+  \frametitle{What is Linear Logic?}
+  Features:
 
   \begin{itemize}
-    \item Decomposition of Classical Logic \pause
-    \item Realizing constructivity keeping Duality (symmetry) intact \pause
+    \item Decomposition of Classical Logic 
+    \item Realizing constructivity keeping Duality (symmetry) intact 
+    \item Resource sensitive (i.e. each hypothesize can be used exactly at once) 
     \item Suitable for expressing parallel computing
   \end{itemize}
   
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Decomposition of Classical Logic} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    Familiar connectives ``$\wedge$'' and ``$\vee$'' break into waeker four connectives:
+
+    \begin{itemize}
+      \item ``$\wedge$'' into ``$\otimes$'' and ``$\with$'' 
+      \item ``$\vee$''   into ``$\parr$''   and ``$\oplus$'' 
+    \end{itemize}
+    
+\end{frame}
 
 \begin{frame}
-  \frametitle{Suitable for parallel computing} \pause
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Resource sensitive} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  Usual logic :
+  \begin{prooftree}
+      \AxiomC{$X$}
+      \AxiomC{$X \Rightarrow Y$}
+      \BinaryInfC{$Y$ (but $X$ still holds.)}
+  \end{prooftree} 
+
+  Linear Logic :
+  \begin{prooftree}
+      \AxiomC{$X$}
+      \AxiomC{$X \multimap Y$}
+      \BinaryInfC{$Y$ (and then $X$ disappears!)}
+  \end{prooftree}
+
+\end{frame}
+
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Suitable for expressing parallel computing} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \begin{prooftree}
 
@@ -80,7 +118,10 @@
     \AxiomC{$g : C \multimap D$}
     \BinaryInfC{$f \otimes g : A \otimes B \multimap C \otimes D$}
     
-  \end{prooftree}
+  \end{prooftree} 
+
+  Meaning : Programs which do NOT share the same resouce can be executed
+  at the same time.
 
 \end{frame}
 
