@@ -77,19 +77,26 @@
   \frametitle{Decomposition of Classical Logic} 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    Familiar connectives ``$\wedge$'' and ``$\vee$'' break into waeker four connectives:
+    Familiar connectives ``$\wedge$'' and ``$\vee$'' break into weaker four connectives:
 
     \begin{itemize}
       \item ``$\wedge$'' into ``$\otimes$'' and ``$\with$'' 
       \item ``$\vee$''   into ``$\parr$''   and ``$\oplus$'' 
     \end{itemize}
+
+    \begin{itemize}
+      \item \textit{Multiplicative} are ``$\otimes$'' and ``$\parr$'' 
+      \item \textit{Additive} are ``$\with$''   and ``$\oplus$'' 
+    \end{itemize}
+
+    System containing Multiplicative and Additive is called \textit{MALL}
     
 \end{frame}
 
 \begin{frame}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \frametitle{Resource sensitive} 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Resource sensitiveness} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   Usual logic :
   \begin{prooftree}
@@ -125,12 +132,91 @@
 
 \end{frame}
 
+\begin{frame}
+  
+  \begin{prooftree}
+
+    \AxiomC{$f : X \multimap Y$}
+    \AxiomC{$g : X \multimap Z$}
+    \BinaryInfC{$f \with g : X \multimap Y \with Z$}
+    
+  \end{prooftree}
+
+  and
+
+  \begin{prooftree}
+
+    \AxiomC{$Y \with Z \nvdash Y \otimes Z$}
+    
+  \end{prooftree}
+
+  Meaning : Programs which share the same resouce CANNOT be executed
+  at the same time unless copying the resource (X in this case),
+  while we CAN CHOOSE either $Y$ or $Z$.
+  In fact, copying and deleting of resources are explicit.
+
+\end{frame}
+
+\begin{frame}
+  
+  \begin{prooftree}
+
+    \AxiomC{$Y \oplus Z \nvdash Y$}
+    
+  \end{prooftree}
+
+  nor
+
+  \begin{prooftree}
+
+    \AxiomC{$Y \oplus Z \nvdash Z$}
+    
+  \end{prooftree} 
+
+  Meaning : Either $Y$ or $Z$ holds, but we CANNOT choose neither $Y$ or $Z$.
+
+\end{frame}
+
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Off topic: Variants of Linear Logic}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{itemize}
+      \item \textit{Multiplicative} are ``$\otimes$'' and ``$\parr$'' 
+      \item \textit{Additive} are ``$\with$''   and ``$\oplus$''
+      \item \textit{Exponential} are ``$!$'' and ``$?$''
+  \end{itemize}
+
+  hassse.
+  
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                           \section{What is Phase Semantics?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                           
 \begin{frame} 
   \frametitle{What is Phase Semantics?}
+
+  First off, what is Semantics?
+
+  \begin{itemize}
+    \item To provide rigorous defnitions that abstract away from implementation
+      details
+    \item To provide mathematical tools for proving properties of programs (Amadio, Curien)
+  \end{itemize}
+
+  Phase Semantics is a kind of semantics, which is based on the idea of \textit{Tarskian style}: \\
+
+  \begin{itemize}
+    \item ``A'' means A which have truth value (true or false)
+    \item ``A $\wedge$ B'' means ``A'' and ``B''
+  \end{itemize}
+
+  and so on.\\
+
+  \textit{Phase Space} is Phase Space for MALL.
   
 \end{frame}
 
@@ -139,8 +225,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                           
 \begin{frame}
-  \frametitle{What is Soundness?}
+  \frametitle{What is Soundness?} 
 
+  Formulae derived using specific rules are semantically valid, which is minimum requirement for semantics in general (Systems which yeilds lie are compeletely useless).
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          \section{Proof of soundness}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          
+\begin{frame}
+  \frametitle{Proof of soundness}
+
+  \begin{theorem}
+    Formulae which are provable in MALL are all valid in Phase Space.
+  \end{theorem}
+
+  \begin{proof}
+    
+  \end{proof}
   
 \end{frame}
 
