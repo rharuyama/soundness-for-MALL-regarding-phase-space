@@ -7,6 +7,7 @@
 \usepackage{bussproofs} %% For proof tree
 \usepackage{ cmll } %% For connective ``par''
 \usepackage[all,cmtip]{xy} %% For Hasse diagram of LL
+\usepackage{amsmath}
 
 \setbeamertemplate{theorems}[numbered]
 \newtheorem{thm}{Theorem}[section]
@@ -36,7 +37,7 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                          \section{What is Linear Logic?}
+\section{What is Linear Logic?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                           
 \begin{frame}
@@ -213,12 +214,19 @@
 
   and so on.\\
 
+  This seems ovious, however, there is another semantics which is not the case: \textit{Coherent Semantics}, which is BHK style inconsistent semantics. \\
+
   \textit{Phase Space} is Phase Semantics for MALL.
   
 \end{frame}
 
+\begin{frame}
+  \frametitle{Other semantics}
+  
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                          \section{What is soundness?}
+\section{What is soundness?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                           
 \begin{frame}
@@ -229,22 +237,58 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                          \section{Proof of soundness}
+\section{Proof of soundness}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                          
+
+\begin{frame}
+  \frametitle{Syntax of MALL}
+
+  \begin{definition}{Formula of MALL.}
+    \begin{align*}
+      A ::&= p \; | \;
+             p^{\bot} \\
+      &| \;
+             A \otimes A \;
+             | A \oplus A \\
+      &| \;
+             A \with A \; | \;
+             A \parr A \\
+      &| \;
+             \textbf{1} \; | \;
+             \textbf{0} \; | \;
+             \top \; | \;
+             \bot
+    \end{align*}
+  \end{definition}
+    
+\end{frame}
+
 \begin{frame}
   \frametitle{Proof of soundness}
 
   \begin{theorem}
-    Formulae which are provable in MALL are all valid in Phase Space.
+    Formulae which are provable in MALL are all valid in Phase Space \\
+    i. e. \[
+        \vdash \underbar{X} \Rightarrow 1 \in \underbar{X}
+    \]
+        
   \end{theorem}
 
   \begin{proof}
-    
+    By straitforward induction on inference rules.
   \end{proof}
   
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Future work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Future work}
+
+\end{frame}
+                          
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
