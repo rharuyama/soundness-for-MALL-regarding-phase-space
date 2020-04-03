@@ -1,35 +1,14 @@
 \documentclass[dvipdfmx,cjk]{beamer} 
-%\documentclass[dvipdfm,cjk]{beamer} %% オプションは環境や利用するプログラムに
-%\documentclass[dvips,cjk]{beamer}   %% よって変える
 
-\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}} %% しおりが文字化けしないように
-%\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
 
-%\setbeamertemplate{navigation symbols}{} %% 右下のアイコンを消す
-
-\usetheme{CambridgeUS}         %% theme の選択
-%\usetheme{Boadilla}           %% Beamer のディレクトリの中の
-%\usetheme{Madrid}             %% beamerthemeCambridgeUS.sty を指定
-%\usetheme{Antibes}            %% 色々と試してみるといいだろう
-%\usetheme{Montpellier}        %% サンプルが beamer\doc に色々とある。
-%\usetheme{Berkeley}
-%\usetheme{Goettingen}
-%\usetheme{Singapore}
-%\usetheme{Szeged}
+\usetheme{CambridgeUS}
 
 \usepackage{bussproofs} %% For proof tree
 \usepackage{ cmll } %% For connective ``par''
 \usepackage[all,cmtip]{xy} %% For Hasse diagram of LL
 
-%\usecolortheme{rose}          %% colortheme を選ぶと色使いが変わる
-%\usecolortheme{albatross}
-
-%\useoutertheme{shadow}                 %% 箱に影をつける
-%\usefonttheme{professionalfonts}       %% 数式の文字を通常の LaTeX と同じにする
-
-%\setbeamercovered{transparent}         %% 消えている文字をうっすらと表示する
-
-\setbeamertemplate{theorems}[numbered]  %% 定理に番号をつける
+\setbeamertemplate{theorems}[numbered]
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{proposition}[thm]{Proposition}
 \theoremstyle{example}
@@ -40,7 +19,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \begin{document}
 \title[LL]{Soundness for MALL regarding Phase Space} 
