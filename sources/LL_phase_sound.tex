@@ -43,7 +43,7 @@
 
 
 \begin{document}
-\title[LL]{Soundness of Phase Semantics on Linear Logic} 
+\title[LL]{Soundness for MALL regarding Phase Space} 
 \author[Haruyama]{Ryo Haruyama}
 \institute[Nagoya Univ.]{Nagoya Univ.}
 \date{\today}
@@ -53,6 +53,7 @@
 \end{frame}
 
 \begin{frame}
+  One kind of soundness for Linear Logic as to Phase Semantics is dealt with.
   \tableofcontents
 \end{frame}
 
@@ -92,7 +93,7 @@
       \item \textit{Additive} are ``$\with$''   and ``$\oplus$'' 
     \end{itemize}
 
-    System containing Multiplicative and Additive is called \textit{MALL}
+    System containing only Multiplicative and Additive is called \textit{MALL}
     
 \end{frame}
 
@@ -101,7 +102,7 @@
   \frametitle{Resource sensitiveness} 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  ``$\multimap$'' is linear version of ``$\Rightarrow$'' \\
+  ``$\multimap$'' is linear version of ``$\Rightarrow$'' \\~\\
 
   Usual logic :
   \begin{prooftree}
@@ -121,12 +122,8 @@
 
 \begin{frame}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \frametitle{Suitable for expressing parallel computing} 
+  \frametitle{$\otimes$ : Tensor, suitable for expressing parallel computing} 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  %%%%%%%%%%%%%%%%%%%%%%%%
-  \otimes (Tensor product)
-  %%%%%%%%%%%%%%%%%%%%%%%%
 
   \begin{prooftree}
 
@@ -142,9 +139,9 @@
 \end{frame}
 
 \begin{frame}
-  %%%%%%%%%%%%%%%%%%%%%%%%%
-  \with (Cartesian product)
-  %%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{$\with$ : Cartesian product} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
   \begin{prooftree}
 
@@ -163,16 +160,16 @@
   \end{prooftree}
 
   Meaning : Programs which share the same resouce CANNOT be executed
-  at the same time unless copying the resource (X in this case),
-  while we CAN CHOOSE either $Y$ or $Z$.
+  at the same time unless copying the resource,
+  while we CAN CHOOSE either $Y$ or $Z$. \\
   In fact, copying and deleting of resources are explicit.
 
 \end{frame}
 
 \begin{frame}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \oplus (Dual of ``$\with$'')
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{$\oplus$ : Additive Sum, dual of ``$\with$''} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
   \begin{prooftree}
 
@@ -198,8 +195,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \begin{itemize}
-      \item \textit{Multiplicative} are ``$\otimes$'' and ``$\parr$'' 
-      \item \textit{Additive} are ``$\with$''   and ``$\oplus$''
+      \item Multiplicative are ``$\otimes$'' and ``$\parr$'' 
+      \item Additive are ``$\with$''   and ``$\oplus$''
       \item \textit{Exponential} are ``$!$'' and ``$?$''
   \end{itemize}
 
@@ -220,13 +217,14 @@
 \begin{frame} 
   \frametitle{What is Phase Semantics?}
 
-  First off, what is Semantics?
+  First off, what is \textit{semantics}?
 
   \begin{itemize}
     \item To provide rigorous defnitions that abstract away from implementation
       details
-    \item To provide mathematical tools for proving properties of programs (Amadio, Curien)
+    \item To provide mathematical tools for proving properties of programs
   \end{itemize}
+   (Amadio, Curien)\\~\\
 
   Phase Semantics is a kind of semantics, which is based on the idea of \textit{Tarskian style}: \\
 
@@ -242,11 +240,11 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                          \section{What is Soundness?}
+                          \section{What is soundness?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                           
 \begin{frame}
-  \frametitle{What is Soundness?} 
+  \frametitle{What is \textit{soundness}?} 
 
   Formulae derived using specific rules are semantically valid, which is minimum requirement for semantics in general (Systems which yeilds lie are compeletely useless).
   
