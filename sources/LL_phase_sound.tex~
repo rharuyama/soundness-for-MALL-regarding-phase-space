@@ -1,0 +1,254 @@
+\documentclass[dvipdfmx,cjk]{beamer} 
+%\documentclass[dvipdfm,cjk]{beamer} %% オプションは環境や利用するプログラムに
+%\documentclass[dvips,cjk]{beamer}   %% よって変える
+
+\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}} %% しおりが文字化けしないように
+%\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+
+%\setbeamertemplate{navigation symbols}{} %% 右下のアイコンを消す
+
+\usetheme{CambridgeUS}         %% theme の選択
+%\usetheme{Boadilla}           %% Beamer のディレクトリの中の
+%\usetheme{Madrid}             %% beamerthemeCambridgeUS.sty を指定
+%\usetheme{Antibes}            %% 色々と試してみるといいだろう
+%\usetheme{Montpellier}        %% サンプルが beamer\doc に色々とある。
+%\usetheme{Berkeley}
+%\usetheme{Goettingen}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+
+\usepackage{bussproofs} %% For proof tree
+\usepackage{ cmll } %% for connective ``par''
+
+%\usecolortheme{rose}          %% colortheme を選ぶと色使いが変わる
+%\usecolortheme{albatross}
+
+%\useoutertheme{shadow}                 %% 箱に影をつける
+%\usefonttheme{professionalfonts}       %% 数式の文字を通常の LaTeX と同じにする
+
+%\setbeamercovered{transparent}         %% 消えている文字をうっすらと表示する
+
+\setbeamertemplate{theorems}[numbered]  %% 定理に番号をつける
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{proposition}[thm]{Proposition}
+\theoremstyle{example}
+\newtheorem{exam}[thm]{Example}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}[thm]{Question}
+\newtheorem{prob}[thm]{Problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\title[LL]{Soundness of Phase Semantics on Linear Logic} 
+\author[Haruyama]{Ryo Haruyama}
+\institute[Nagoya Univ.]{Nagoya Univ.}
+\date{\today}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          \section{What is Linear Logic?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          
+\begin{frame}
+  \frametitle{What is Linear Logic?}
+  Features:
+
+  \begin{itemize}
+    \item Decomposition of Classical Logic 
+    \item Realizing constructivity keeping Duality (symmetry) intact 
+    \item Resource sensitive (i.e. each hypothesize can be used exactly at once) 
+    \item Suitable for expressing parallel computing
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Decomposition of Classical Logic} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    Familiar connectives ``$\wedge$'' and ``$\vee$'' break into weaker four connectives:
+
+    \begin{itemize}
+      \item ``$\wedge$'' into ``$\otimes$'' and ``$\with$'' 
+      \item ``$\vee$''   into ``$\parr$''   and ``$\oplus$'' 
+    \end{itemize}
+
+    \begin{itemize}
+      \item \textit{Multiplicative} are ``$\otimes$'' and ``$\parr$'' 
+      \item \textit{Additive} are ``$\with$''   and ``$\oplus$'' 
+    \end{itemize}
+
+    System containing Multiplicative and Additive is called \textit{MALL}
+    
+\end{frame}
+
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Resource sensitiveness} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  Usual logic :
+  \begin{prooftree}
+      \AxiomC{$X$}
+      \AxiomC{$X \Rightarrow Y$}
+      \BinaryInfC{$Y$ (but $X$ still holds.)}
+  \end{prooftree} 
+
+  Linear Logic :
+  \begin{prooftree}
+      \AxiomC{$X$}
+      \AxiomC{$X \multimap Y$}
+      \BinaryInfC{$Y$ (and then $X$ disappears!)}
+  \end{prooftree}
+
+\end{frame}
+
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Suitable for expressing parallel computing} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{prooftree}
+
+    \AxiomC{$f : A \multimap B$}
+    \AxiomC{$g : C \multimap D$}
+    \BinaryInfC{$f \otimes g : A \otimes B \multimap C \otimes D$}
+    
+  \end{prooftree} 
+
+  Meaning : Programs which do NOT share the same resouce can be executed
+  at the same time.
+
+\end{frame}
+
+\begin{frame}
+  
+  \begin{prooftree}
+
+    \AxiomC{$f : X \multimap Y$}
+    \AxiomC{$g : X \multimap Z$}
+    \BinaryInfC{$f \with g : X \multimap Y \with Z$}
+    
+  \end{prooftree}
+
+  and
+
+  \begin{prooftree}
+
+    \AxiomC{$Y \with Z \nvdash Y \otimes Z$}
+    
+  \end{prooftree}
+
+  Meaning : Programs which share the same resouce CANNOT be executed
+  at the same time unless copying the resource (X in this case),
+  while we CAN CHOOSE either $Y$ or $Z$.
+  In fact, copying and deleting of resources are explicit.
+
+\end{frame}
+
+\begin{frame}
+  
+  \begin{prooftree}
+
+    \AxiomC{$Y \oplus Z \nvdash Y$}
+    
+  \end{prooftree}
+
+  nor
+
+  \begin{prooftree}
+
+    \AxiomC{$Y \oplus Z \nvdash Z$}
+    
+  \end{prooftree} 
+
+  Meaning : Either $Y$ or $Z$ holds, but we CANNOT choose neither $Y$ or $Z$.
+
+\end{frame}
+
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Off topic: Variants of Linear Logic}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{itemize}
+      \item \textit{Multiplicative} are ``$\otimes$'' and ``$\parr$'' 
+      \item \textit{Additive} are ``$\with$''   and ``$\oplus$''
+      \item \textit{Exponential} are ``$!$'' and ``$?$''
+  \end{itemize}
+
+  (hassse diagram here)
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          \section{What is Phase Semantics?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          
+\begin{frame} 
+  \frametitle{What is Phase Semantics?}
+
+  First off, what is Semantics?
+
+  \begin{itemize}
+    \item To provide rigorous defnitions that abstract away from implementation
+      details
+    \item To provide mathematical tools for proving properties of programs (Amadio, Curien)
+  \end{itemize}
+
+  Phase Semantics is a kind of semantics, which is based on the idea of \textit{Tarskian style}: \\
+
+  \begin{itemize}
+    \item ``A'' means A which is truth value (true or false)
+    \item ``A $\wedge$ B'' means ``A'' and ``B''
+  \end{itemize}
+
+  and so on.\\
+
+  \textit{Phase Space} is Phase Space for MALL.
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          \section{What is Soundness?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          
+\begin{frame}
+  \frametitle{What is Soundness?} 
+
+  Formulae derived using specific rules are semantically valid, which is minimum requirement for semantics in general (Systems which yeilds lie are compeletely useless).
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          \section{Proof of soundness}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          
+\begin{frame}
+  \frametitle{Proof of soundness}
+
+  \begin{theorem}
+    Formulae which are provable in MALL are all valid in Phase Space.
+  \end{theorem}
+
+  \begin{proof}
+    
+  \end{proof}
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
