@@ -400,11 +400,21 @@
 \end{frame}
 
 \begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Validity}
+  %%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{definition}{\underbar{X} (as formula) is valid} iff
+    $ 1 \in \underbar{X} $
+    ($ \underbar{X} \subseteq M $)
+  \end{definition}
+\end{frame}
+
+\begin{frame}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Proof of soundness}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{theorem}
-    Formulae which are provable in MALL are all valid in Phase Space \\
+    Sequent which are provable in MALL are all valid in Phase Space \\
     i. e. \[
         \vdash \underbar{X} \Rightarrow 1 \in \underbar{X}
     \]
@@ -412,7 +422,7 @@
   \end{theorem}
 
   \begin{proof}
-    By straitforward induction on inference rules.
+    By straightforward induction on inference rules.
   \end{proof}
   
 \end{frame}
