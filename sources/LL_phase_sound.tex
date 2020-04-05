@@ -190,12 +190,13 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                          \section{What is Phase Semantics?}
+\section{What is Phase Semantics?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                           
-\begin{frame} 
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                          
   \frametitle{What is Phase Semantics?}
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   First off, what is \textit{semantics}?
 
   \begin{itemize}
@@ -221,8 +222,9 @@
 \end{frame}
 
 \begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Other semantics}
-  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -268,19 +270,27 @@
   \frametitle{Inference rules of MALL}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{definition}{Inference rules of MALL}
-    \begin{prooftree}
+    \begin{center}
       
       \RightLabel{(\textit{identity})}
       \AxiomC{}
       \UnaryInfC{$ \vdash A, A^\bot $}
+      \DisplayProof
+      \hskip 1.5em
+      \RightLabel{(\textit{cut})}
+      \AxiomC{$\vdash \Gamma, A$}
+      \AxiomC{$\vdash A^\bot, \Delta$}
+      \BinaryInfC{$\vdash \Gamma, \Delta$}
+      \DisplayProof
       
-    \end{prooftree}
+    \end{center}
   \end{definition}
 \end{frame}
 
 \begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Proof of soundness}
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{theorem}
     Formulae which are provable in MALL are all valid in Phase Space \\
     i. e. \[
