@@ -336,6 +336,34 @@
 \end{frame}
 
 \begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Phase Space}
+  %%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{definition}{Phase Space $ = (M, \bot) $} \\
+    where $M$ is commutative monoid and $\bot \subseteq M$ is defined
+  \end{definition}
+
+  \begin{definition}{Commutative monoid $M$} holds \\
+    \begin{itemize}
+      \item commutativity: $pq = qp$
+      \item associativity: $(pq)r = p(qr)$
+      \item identity: $1p = p1 = p$
+    \end{itemize}
+    for all $p, q, r \in M$.
+  \end{definition}
+
+  \begin{definition}{$X \multimap Y$}
+    is defined as 
+    \[
+      m \in X \multimap Y 
+      :\Leftrightarrow \forall x (x \in X \Rightarrow mx \in Y)
+    \] 
+  \end{definition}
+  
+\end{frame}
+
+\begin{frame}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Proof of soundness}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
