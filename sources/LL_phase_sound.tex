@@ -340,8 +340,8 @@
   \frametitle{Phase Space}
   %%%%%%%%%%%%%%%%%%%%%%%%
 
-  \begin{definition}{Phase Space $ = (M, \bot) $} \\
-    where $M$ is commutative monoid and $\bot \subseteq M$ is defined
+  \begin{definition}{Phase Space $ := (M, \bot) $} \\
+    where $M$ is commutative monoid and $\bot \subseteq M$ is defined.
   \end{definition}
 
   \begin{definition}{Commutative monoid $M$} holds \\
@@ -352,15 +352,51 @@
     \end{itemize}
     for all $p, q, r \in M$.
   \end{definition}
+  
+\end{frame}
 
+\begin{frame}
+  
   \begin{definition}{$X \multimap Y$}
     is defined as 
-    \[
-      m \in X \multimap Y 
-      :\Leftrightarrow \forall x (x \in X \Rightarrow mx \in Y)
-    \] 
+    \begin{align*}
+      & m \in X \multimap Y \\
+      & :\Leftrightarrow \forall x (x \in X \Rightarrow mx \in Y)
+    \end{align*}
   \end{definition}
-  
+
+  \begin{definition}{orthogonal}
+    \[
+      X^\bot := X \multimap \bot
+    \]
+  \end{definition}
+
+  \begin{definition}{X is \textit{fact}} iff
+    \[
+     X = X^{\bot\bot}
+    \]
+    or equivalently, $X$ is of the form $Y^\bot$.
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}
+    For convention,
+    \begin{align*}
+      & xy \in X.Y :\Leftrightarrow x \in X \land y \in Y 
+    \end{align*}
+    Connectives are interpreted in this way:
+    \begin{align*}
+     & X \otimes Y := (X.Y)^{\bot\bot} \\
+     & X \parr   Y := (X^\bot.Y^\bot)^\bot \\
+     & X \multimap Y = (X.Y^\bot)^\bot \\
+     & X \with Y := X \cap Y \\
+     & X \oplus Y := (X \cup Y)^{\bot\bot} \\
+     & \textbf{1} := \{1\}^{\bot\bot} \\
+     & \textbf{0} := \varnothing^{\bot\bot} \\
+     & \top := M
+    \end{align*}
+  \end{definition}
 \end{frame}
 
 \begin{frame}
