@@ -241,26 +241,41 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Syntax of MALL}
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{definition}{Formula of MALL.}
     \begin{align*}
-      A ::&= p \; | \;
-             p^{\bot} \\
+      A ::&= p              \; | \;
+             p^{\bot}        \\
       &| \;
-             A \otimes A \;
-             | A \oplus A \\
+             A \otimes A    \; | \;
+             A \oplus  A    \\
       &| \;
-             A \with A \; | \;
-             A \parr A \\
+             A \with A      \; | \;
+             A \parr A      \\
       &| \;
-             \textbf{1} \; | \;
-             \textbf{0} \; | \;
-             \top \; | \;
+             \textbf{1}     \; | \;
+             \textbf{0}     \; | \;
+             \top           \; | \;
              \bot
     \end{align*}
   \end{definition}
-    
+\end{frame}
+
+\begin{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \frametitle{Inference rules of MALL}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{definition}{Inference rules of MALL}
+    \begin{prooftree}
+      
+      \RightLabel{(\textit{identity})}
+      \AxiomC{}
+      \UnaryInfC{$ \vdash A, A^\bot $}
+      
+    \end{prooftree}
+  \end{definition}
 \end{frame}
 
 \begin{frame}
