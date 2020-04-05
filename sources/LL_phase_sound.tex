@@ -269,7 +269,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Inference rules of MALL}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{definition}{Inference rules of MALL}
+  \begin{definition}{Inference rules of MALL.}
     \begin{center}
       
       \RightLabel{(\textit{identity})}
@@ -281,6 +281,54 @@
       \AxiomC{$\vdash \Gamma, A$}
       \AxiomC{$\vdash A^\bot, \Delta$}
       \BinaryInfC{$\vdash \Gamma, \Delta$}
+      \DisplayProof
+
+      \RightLabel{(\textit{exchange})}
+      \AxiomC{$ \vdash \Gamma, A, B, \Delta $}
+      \UnaryInfC{$ \vdash \Gamma, B, A, \Delta $}
+      \DisplayProof
+
+      \RightLabel{(\textit{one})}
+      \AxiomC{}
+      \UnaryInfC{$ \vdash \textbf{1} $}
+      \DisplayProof
+      \hskip 1.5em
+      \RightLabel{(\textit{false})}
+      \AxiomC{$ \vdash \Gamma $}
+      \UnaryInfC{$ \vdash \Gamma, \bot $}
+      \DisplayProof
+
+      \RightLabel{(\textit{times})}
+      \AxiomC{$ \vdash \Gamma, A $}
+      \AxiomC{$ \vdash \Gamma, B $}
+      \BinaryInfC{$ \vdash \Gamma, A \otimes B, \Delta $}
+      \DisplayProof
+      \hskip 1.5em
+      \RightLabel{(\textit{par})}
+      \AxiomC{$ \vdash \Gamma, A, B $}
+      \UnaryInfC{$ \vdash \Gamma, A \parr B $}
+      \DisplayProof
+      
+      \RightLabel{(\textit{true})}
+      \AxiomC{}
+      \UnaryInfC{$ \vdash \Gamma, \top $}
+      \DisplayProof
+      \hskip 1.5em
+      (\textit{no rule for zero})
+      
+      \RightLabel{(\textit{with})}
+      \AxiomC{$ \vdash \Gamma, A $}
+      \AxiomC{$ \vdash \Gamma, B $}
+      \BinaryInfC{$ \vdash \Gamma, A \with B $}
+      \DisplayProof
+      \hskip 1.5em
+      \RightLabel{(\textit{left plus})}
+      \AxiomC{$ \vdash \Gamma, A $}
+      \UnaryInfC{$ \vdash \Gamma, A \oplus B $}
+      \DisplayProof
+      \RightLabel{(\textit{right plus})}
+      \AxiomC{$ \vdash \Gamma, B $}
+      \UnaryInfC{$ \vdash \Gamma, A \oplus B $}
       \DisplayProof
       
     \end{center}
