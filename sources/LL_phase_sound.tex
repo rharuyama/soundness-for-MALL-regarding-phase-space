@@ -22,7 +22,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\title[LL]{Soundness for Linear Logic regarding Phase Smantics} 
+\title[LL]{Soundness for Linear Logic regarding Phase Semantics} 
 \author[Haruyama]{Ryo Haruyama}
 \institute[Nagoya Univ.]{Nagoya Univ.}
 \date{\today}
@@ -403,6 +403,13 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Validity}
   %%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{definition}
+    Sequent \\
+    \[ \vdash \Gamma, A\] \\
+    is interpreted as subset of M \\
+    \[ \Gamma \parr A \]
+  \end{definition}
+  
   \begin{definition}{\underbar{X} (as formula) is valid} iff
     $ 1 \in \underbar{X} $
     ($ \underbar{X} \subseteq M $)
@@ -418,11 +425,38 @@
     i. e. \[
         \vdash \underbar{X} \Rightarrow 1 \in \underbar{X}
     \]
-        
   \end{theorem}
 
   \begin{proof}
     By straightforward induction on inference rules.
+    \begin{enumerate}
+      \item
+        \RightLabel{(\textit{identity})}
+        \AxiomC{}
+        \UnaryInfC{$ \vdash A, A^\bot $}
+        \DisplayProof \\
+        \[ A \parr A^\bot = A \multimap A \ni 1
+        \]
+        ($\because$ definition of identity 1)
+
+      \item
+        \RightLabel{(\textit{cut})}
+        \AxiomC{$\vdash \Gamma, A$}
+        \AxiomC{$\vdash A^\bot, \Delta$}
+        \BinaryInfC{$\vdash \Gamma, \Delta$}
+        \DisplayProof \\
+        We have to show that if $1 \in \Gamma \parr A$ and $1 \in A^\bot \parr \Delta$
+        then $1 \in \Gamma \parr \Delta$. In fact this is equivalent to
+        \[
+         1 \in \Gamma^\bot \multimap A \land 1 \in A \multimap \Delta
+         \Rightarrow 1 \in \Gamma^\bot \multimap \Delta
+        \].
+         This is easily followed by
+        \[
+         \Gamma^\bot \subseteq A, A \subseteq \Delta
+         \Rightarrow \Gamma^\bot \subseteq \Delta
+        \]
+    \end{enumerate}
   \end{proof}
   
 \end{frame}
