@@ -231,7 +231,7 @@
     \item Coherent semantics
     \item Categorical semantics
     \item Geometry of interaction
-    \item Game semantics
+    \item Game semantics \\
       and so on.
   \end{itemize}
 \end{frame}
@@ -350,6 +350,7 @@
   \frametitle{Phase Space}
   %%%%%%%%%%%%%%%%%%%%%%%%
 
+  We give semantics for MALL.
   \begin{definition}{Phase Space $ := (M, \bot) $} \\
     where $M$ is commutative monoid and $\bot \subseteq M$ is defined.
   \end{definition}
@@ -395,7 +396,7 @@
     \begin{align*}
       & xy \in X.Y :\Leftrightarrow x \in X \land y \in Y 
     \end{align*}
-    Connectives are interpreted in this way:
+    Connectives are interpreted in this way (more precisely, we are defining interpretation function from $formula$ to $\wp{(M)}$):
     \begin{align*}
      & X \otimes Y := (X.Y)^{\bot\bot} \\
      & X \parr   Y := (X^\bot.Y^\bot)^\bot \\
@@ -426,7 +427,7 @@
   \end{definition}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Proof of soundness}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -480,22 +481,22 @@
         \DisplayProof \\
         We have to show that if $1 \in \Gamma \parr A$ and $1 \in A^\bot \parr \Delta$
         then $1 \in \Gamma \parr \Delta$. In fact this is equivalent to
-        \[
-         1 \in \Gamma^\bot \multimap A, 1 \in A \multimap \Delta
-         \Rightarrow 1 \in \Gamma^\bot \multimap \Delta
-        \]
+        \begin{align*}
+                     & 1 \in \Gamma^\bot \multimap A, 1 \in A \multimap \Delta \\
+         \Rightarrow & 1 \in \Gamma^\bot \multimap \Delta
+        \end{align*}
          This is easily followed by
-        \[
-         \Gamma^\bot \subseteq A, A \subseteq \Delta
-         \Rightarrow \Gamma^\bot \subseteq \Delta
-        \]
+        \begin{align*}
+                     & \Gamma^\bot \subseteq A, A \subseteq \Delta \\
+         \Rightarrow & \Gamma^\bot \subseteq \Delta
+        \end{align*}
 
       \item % (v)
         \RightLabel{(\textit{exchange})}
         \AxiomC{$ \vdash \Gamma, A, B, \Delta $}
         \UnaryInfC{$ \vdash \Gamma, B, A, \Delta $}
         \DisplayProof \\
-        Immidiate.
+        $\because$ ``$\land$'' is commutative.
 
       \item % (vi)
         \RightLabel{(\textit{with})}
@@ -536,13 +537,28 @@
       \item % (ix)
         \RightLabel{(\textit{times})}
         \AxiomC{$ \vdash \Gamma, A $}
-        \AxiomC{$ \vdash \Gamma, B $}
+        \AxiomC{$ \vdash \Delta, B $}
         \BinaryInfC{$ \vdash \Gamma, A \otimes B, \Delta $}
         \DisplayProof \\
-        \[
-         proof for times
-        \]
-      
+        We have to show that if $1 \in \Gamma \parr A$ and $1 \in \Delta \parr B$
+        then $1 \in \Gamma \parr \Delta \parr (A \otimes B)$.
+        Hypotheses can be transformed into
+        $1 \in \Gamma^\bot \multimap A$ and $1 \in \Delta^\bot \multimap B$ respectively.
+        Therefore, we have $\Gamma^\bot \subseteq A$ and $\Delta^\bot \subseteq B$
+        \begin{align*}
+          & \Rightarrow \Gamma^\bot.\Delta^\bot \subseteq A.B \\
+          & \Rightarrow (\Gamma^\bot.\Delta^\bot)^{\bot\bot} \subseteq (A.B)^{\bot\bot} \\
+          & \Rightarrow \Gamma^\bot \otimes \Delta^\bot \subseteq A \otimes B \\
+          & \Rightarrow \Gamma^\bot \otimes \Delta^\bot \multimap A \otimes B \ni 1 \\
+          & \Rightarrow \Gamma \parr \Delta \parr (A \otimes B) \ni 1
+        \end{align*}
+
+      \item % (x)
+        \RightLabel{(\textit{par})}
+        \AxiomC{$ \vdash \Gamma, A, B $}
+        \UnaryInfC{$ \vdash \Gamma, A \parr B $}
+        \DisplayProof \\
+        This is tautology. \hfill $\square$
     \end{enumerate}
   
 \end{frame}
