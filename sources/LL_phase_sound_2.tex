@@ -495,8 +495,8 @@
         \AxiomC{$ \vdash \Gamma, B $}
         \BinaryInfC{$ \vdash \Gamma, A \with B $}
         \DisplayProof \\
-        We have to show that if $1 \in \Gamma \par A$ and $1 \in \Gamma \parr B$
-        then $1 \in \Gamma \par (A \with B)$.
+        We have to show that if $1 \in \Gamma \parr A$ and $1 \in \Gamma \parr B$
+        then $1 \in \Gamma \parr (A \with B)$.
         Here we use distributivity of $\parr$ over $\with$: \\
         \[ (\Gamma \parr A) \with (\Gamma \parr B) = \Gamma \parr (A \with B) \]
         By definition of $\with$ and hypothesis, left hand side contains $1$,
@@ -512,7 +512,7 @@
         \AxiomC{$ \vdash \Gamma, B $}
         \UnaryInfC{$ \vdash \Gamma, A \oplus B $}
         \DisplayProof \\
-        Similarly, we use half-distributivity of $\parr$ over $\plus$: \\
+        Similarly, we use half-distributivity of $\parr$ over $\oplus$: \\
         \[ (\Gamma \parr A) \oplus (\Gamma \parr B) \subseteq \Gamma \parr (A \oplus B) \]
       \item % (viii)
         \RightLabel{(\textit{false})}
@@ -532,7 +532,7 @@
         \BinaryInfC{$ \vdash \Gamma, A \otimes B, \Delta $}
         \DisplayProof \\
         \[
-          
+         proof for times
         \]
       
     \end{enumerate}
