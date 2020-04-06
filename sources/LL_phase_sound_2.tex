@@ -226,6 +226,14 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Other semantics}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{itemize}
+    \item Coherent semantics
+    \item Categorical semantics
+    \item Geometry of interaction
+    \item Game semantics
+      and so on.
+  \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -235,7 +243,7 @@
 \begin{frame}
   \frametitle{What is \textit{soundness}?} 
 
-  Formulae derived using specific rules are semantically valid, which is minimum requirement for semantics in general (Systems which yeilds lie are compeletely useless).
+  Formulae derived using specific rules are semantically valid, which is minimum requirement for semantics in general (Systems which yields lie are compeletely useless).
   
 \end{frame}
 
@@ -266,63 +274,65 @@
   \end{definition}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Inference rules of MALL}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{definition}{Inference rules of MALL.}
+  Inference rules of MALL.
     \begin{center}
       
       \RightLabel{(\textit{identity})}
       \AxiomC{}
       \UnaryInfC{$ \vdash A, A^\bot $}
       \DisplayProof
-      \hskip 1.5em
+      \hskip 2.0em
       \RightLabel{(\textit{cut})}
       \AxiomC{$\vdash \Gamma, A$}
       \AxiomC{$\vdash A^\bot, \Delta$}
       \BinaryInfC{$\vdash \Gamma, \Delta$}
-      \DisplayProof
+      \DisplayProof \\[0.5em]
 
       \RightLabel{(\textit{exchange})}
       \AxiomC{$ \vdash \Gamma, A, B, \Delta $}
       \UnaryInfC{$ \vdash \Gamma, B, A, \Delta $}
-      \DisplayProof
+      \DisplayProof \\[0.5em]
 
       \RightLabel{(\textit{one})}
       \AxiomC{}
       \UnaryInfC{$ \vdash \textbf{1} $}
       \DisplayProof
-      \hskip 1.5em
+      \hskip 2.0em
       \RightLabel{(\textit{false})}
       \AxiomC{$ \vdash \Gamma $}
       \UnaryInfC{$ \vdash \Gamma, \bot $}
-      \DisplayProof
+      \DisplayProof \\[0.5em]
+
+      \framebreak
 
       \RightLabel{(\textit{times})}
       \AxiomC{$ \vdash \Gamma, A $}
       \AxiomC{$ \vdash \Gamma, B $}
       \BinaryInfC{$ \vdash \Gamma, A \otimes B, \Delta $}
       \DisplayProof
-      \hskip 1.5em
+      \hskip 2.0em
       \RightLabel{(\textit{par})}
       \AxiomC{$ \vdash \Gamma, A, B $}
       \UnaryInfC{$ \vdash \Gamma, A \parr B $}
-      \DisplayProof
+      \DisplayProof \\[0.5em]
       
       \RightLabel{(\textit{true})}
       \AxiomC{}
       \UnaryInfC{$ \vdash \Gamma, \top $}
       \DisplayProof
-      \hskip 1.5em
-      (\textit{no rule for zero})
+      \hskip 2.0em
+      (\textit{no rule for zero}) \\[0.5em]
       
       \RightLabel{(\textit{with})}
       \AxiomC{$ \vdash \Gamma, A $}
       \AxiomC{$ \vdash \Gamma, B $}
       \BinaryInfC{$ \vdash \Gamma, A \with B $}
       \DisplayProof
-      \hskip 1.5em
+      \hskip 2.0em
       \RightLabel{(\textit{left plus})}
       \AxiomC{$ \vdash \Gamma, A $}
       \UnaryInfC{$ \vdash \Gamma, A \oplus B $}
@@ -333,7 +343,6 @@
       \DisplayProof
       
     \end{center}
-  \end{definition}
 \end{frame}
 
 \begin{frame}
@@ -417,7 +426,7 @@
   \end{definition}
 \end{frame}
 
-\begin{frame}[allowframebreaks]
+\begin{frame}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \frametitle{Proof of soundness}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -428,7 +437,6 @@
     \]
   \end{theorem}
 
-  \begin{proof}
     By straightforward induction on inference rules.
     \begin{enumerate}
       \item % (i)
@@ -446,11 +454,11 @@
         \UnaryInfC{$ \vdash \Gamma, \top $}
         \DisplayProof \\
         \[
-          \Gamma \parr \top = \textbf{0} \multimap \Gamma \ni 
+          \Gamma \parr \top = \textbf{0} \multimap \Gamma 
         \]
         Since $\textbf{0}$ is the smallest fact, $\textbf{0} \subseteq \Gamma$.
         This implies $\forall z, z \in \textbf{0} \Rightarrow z \in \Gamma$.
-        Hence $\forall z, z \in \textbf{0} \Rightarrow 1z \in \Gamma$.
+        Hence $\forall z, z \in \textbf{0} \Rightarrow 1z \in \Gamma$. \\
         $\therefore$ By definition of ``$\multimap$'',
         $1 \in \textbf{0} \multimap \Gamma = \Gamma \parr \top$
 
@@ -461,7 +469,7 @@
         \DisplayProof \\
         Oviously,
         \[
-         1 \in \{1\} \subseteq \{1\}^\bot\bot = \textbf{1}
+         1 \in \{1\} \subseteq \{1\}^{\bot\bot} = \textbf{1}
         \]
 
       \item % (iv)
@@ -536,7 +544,6 @@
         \]
       
     \end{enumerate}
-  \end{proof}
   
 \end{frame}
 
