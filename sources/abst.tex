@@ -1,0 +1,38 @@
+\documentclass{jarticle}
+
+\title{Soundness for Linear Logic regarding Phase Semantics}
+\author{春山　椋}
+\date{\today}
+
+\usepackage{amsmath} % to use align*
+\usepackage{syntax}
+\usepackage{amsthm, amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate} % to use enumerate
+\usepackage{enumitem}  % to use enumerate
+\theoremstyle{break} % to break after definition
+\usepackage[all,cmtip]{xy} % to draw diagram
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  線型論理\cite{girard87}は、その意味論であるCoherence Spaceの分解により生まれた、古典論理の双対性と直感主義論理の構成性を併せ持つ形式体系である。フランスの論理学者Jean-Yves Girardにより発見された。その特徴には、並列計算の表現に適しているということが挙げられる。線型論理の「意味」を理解するためには、Coherence Spaceの他にも様々な意味論を研究する必要がある。
+本プレゼンテーションで取り扱うのは、そのうちの一つであるPhase Spaceである。Phase Spaceは、線型論理の断片の一つであるMultiplicative Additive Linear Logic (MALL)のための意味論で、Tarskian-styleというアイデアに基づく。本プレゼンテーションでは、このPhase Spaceの健全性を証明する。
+前述のとおり、線型論理を理解するためには多様な意味論を研究することが必要である。今後の展望としては、圏論的意味論やゲーム意味論を通して線型論理への理解を深め、Combinatorial linear logicやcategorical machine、linear machineを研究することで、並列計算のプログラミング言語理論への応用を探る。
+\end{abstract}
+
+\begin{thebibliography}{99}
+\bibitem{girard87}
+  Jean-Yves Girard,
+  Linear logic,
+  Theoretical Computer Science,
+  Volume 50, Issue 1,
+  1987
+\end{thebibliography}
+
+\end{document}

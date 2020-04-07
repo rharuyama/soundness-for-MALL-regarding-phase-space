@@ -1,0 +1,29 @@
+\documentclass{jarticle}
+
+\title{Soundness for Linear Logic regarding Phase Semantics}
+\author{春山　椋}
+\date{\today}
+
+\usepackage{amsmath} % to use align*
+\usepackage{syntax}
+\usepackage{amsthm, amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate} % to use enumerate
+\usepackage{enumitem}  % to use enumerate
+\theoremstyle{break} % to break after definition
+\usepackage[all,cmtip]{xy} % to draw diagram
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  
+\end{abstract}
+
+
+
+\end{document}
